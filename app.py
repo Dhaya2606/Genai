@@ -9,7 +9,14 @@ import os
 from datetime import datetime
 
 # Load NLP model
-nlp = spacy.load("en_core_web_sm")
+import spacy
+from spacy.cli import download
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except:
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 st.title("🧠 GenAI Legal Assistant for Indian SMEs")
 
